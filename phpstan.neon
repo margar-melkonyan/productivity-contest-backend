@@ -1,0 +1,17 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - app/
+
+    level: 6
+
+    ignoreErrors:
+#        - '#^Access to an undefined property Spatie\\Permission\\Models\\Role\:\:\$display_name\.$#'
+
+    excludePaths:
+        analyseAndScan:
+#
+#    checkMissingIterableValueType: false
