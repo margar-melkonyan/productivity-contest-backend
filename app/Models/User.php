@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Rooms\Room;
 use Database\Factories\UserFactory;
+use Illuminate\Notifications\Notifiable;
+use App\Models\Challenges\UserChallengeCalendar;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  *
@@ -64,5 +68,16 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function rooms(): BelongsToMany
+    {
+        return $this->belongsToMany(Room::class, 'user_room')
+            ->withPivot('join_at', 'left_at');
+    }
+
+    public function userCalendars(): HasMany
+    {
+        return $this->hasMany(UserChallengeCalendar::class);
     }
 }

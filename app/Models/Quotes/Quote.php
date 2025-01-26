@@ -7,7 +7,7 @@ namespace App\Models\Quotes;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $author
