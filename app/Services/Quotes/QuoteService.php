@@ -50,7 +50,7 @@ class QuoteService
                 ];
             }, $quotes);
 
-            Quote::upsert($quotes, ['text']);
+            Quote::insert($quotes);
         }
     }
 }
